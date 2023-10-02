@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0ybl5x5" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0ybl5x5" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
   <bpmn:collaboration id="Collaboration_123">
     <bpmn:extensionElements>
       <camunda:properties>
@@ -45,28 +45,38 @@
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_061656b" sourceRef="StartEvent_1" targetRef="Gateway_0cx4pmb" />
     <bpmn:sequenceFlow id="Flow_1c8va2y" name="Karta" sourceRef="Gateway_0cx4pmb" targetRef="Activity_0tjchm0" />
-    <bpmn:sequenceFlow id="Flow_0jjr592" name="przelew" sourceRef="Gateway_0cx4pmb" targetRef="Activity_1lxe169" />
+    <bpmn:sequenceFlow id="Flow_0jjr592" name="przelew" sourceRef="Gateway_0cx4pmb" targetRef="Activity_1lxe169">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0m2bl7m" sourceRef="Activity_1lxe169" targetRef="Gateway_00gw1rx" />
     <bpmn:sequenceFlow id="Flow_1sbyzhg" sourceRef="Gateway_00gw1rx" targetRef="Activity_09q8640" />
     <bpmn:sequenceFlow id="Flow_1skyix5" sourceRef="Activity_09q8640" targetRef="Activity_14fjlei" />
     <bpmn:sequenceFlow id="Flow_0qta1z5" sourceRef="Activity_0tjchm0" targetRef="Gateway_00gw1rx" />
     <bpmn:sequenceFlow id="Flow_05zsitk" sourceRef="Activity_14fjlei" targetRef="Event_14alp6s" />
-    <bpmn:serviceTask id="Activity_0tjchm0" name="Płatność kartą">
-      <bpmn:incoming>Flow_1c8va2y</bpmn:incoming>
-      <bpmn:outgoing>Flow_0qta1z5</bpmn:outgoing>
-    </bpmn:serviceTask>
-    <bpmn:serviceTask id="Activity_1lxe169" name="Platność przelew">
-      <bpmn:incoming>Flow_0jjr592</bpmn:incoming>
-      <bpmn:outgoing>Flow_0m2bl7m</bpmn:outgoing>
-    </bpmn:serviceTask>
     <bpmn:userTask id="Activity_09q8640" name="Akceptacja regulaminu">
       <bpmn:incoming>Flow_1sbyzhg</bpmn:incoming>
       <bpmn:outgoing>Flow_1skyix5</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:serviceTask id="Activity_14fjlei" name="Wyslij pogdsumowanie">
+    <bpmn:manualTask id="Activity_0tjchm0" name="Płatność kartą">
+      <bpmn:incoming>Flow_1c8va2y</bpmn:incoming>
+      <bpmn:outgoing>Flow_0qta1z5</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:manualTask id="Activity_1lxe169" name="Platnosc przelew">
+      <bpmn:extensionElements>
+        <camunda:properties>
+          <camunda:property />
+        </camunda:properties>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="Input_24fmka6" />
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0jjr592</bpmn:incoming>
+      <bpmn:outgoing>Flow_0m2bl7m</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:manualTask id="Activity_14fjlei" name="Wyslij pogdsumowanie">
       <bpmn:incoming>Flow_1skyix5</bpmn:incoming>
       <bpmn:outgoing>Flow_05zsitk</bpmn:outgoing>
-    </bpmn:serviceTask>
+    </bpmn:manualTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_123">
@@ -105,16 +115,16 @@
       <bpmndi:BPMNShape id="Event_14alp6s_di" bpmnElement="Event_14alp6s">
         <dc:Bounds x="1152" y="722" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_09kha8d_di" bpmnElement="Activity_0tjchm0">
-        <dc:Bounds x="350" y="160" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_17ay04v_di" bpmnElement="Activity_1lxe169">
-        <dc:Bounds x="590" y="328" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0s5shby_di" bpmnElement="Activity_09q8640">
         <dc:Bounds x="950" y="490" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1gqscvj_di" bpmnElement="Activity_14fjlei">
+      <bpmndi:BPMNShape id="Activity_08ovyr5_di" bpmnElement="Activity_0tjchm0">
+        <dc:Bounds x="350" y="160" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1c3wnkh_di" bpmnElement="Activity_1lxe169">
+        <dc:Bounds x="590" y="328" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1st2t6u_di" bpmnElement="Activity_14fjlei">
         <dc:Bounds x="950" y="700" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_061656b_di" bpmnElement="Flow_061656b">
