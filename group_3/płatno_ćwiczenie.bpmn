@@ -11,8 +11,8 @@
       <bpmn:lane id="Lane_1q421qc" name="Uzytkownik">
         <bpmn:flowNodeRef>Gateway_0cx4pmb</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_09q8640</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_00gw1rx</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_09q8640</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_0nwala9" name="System B">
         <bpmn:flowNodeRef>Activity_1lxe169</bpmn:flowNodeRef>
@@ -30,10 +30,6 @@
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_061656b</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:task id="Activity_09q8640" name="Akceptacja regulaminu">
-      <bpmn:incoming>Flow_1sbyzhg</bpmn:incoming>
-      <bpmn:outgoing>Flow_1skyix5</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:exclusiveGateway id="Gateway_00gw1rx">
       <bpmn:incoming>Flow_0m2bl7m</bpmn:incoming>
       <bpmn:incoming>Flow_0qta1z5</bpmn:incoming>
@@ -42,10 +38,6 @@
     <bpmn:endEvent id="Event_14alp6s">
       <bpmn:incoming>Flow_05zsitk</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Activity_14fjlei" name="Wyslij pogdsumowanie">
-      <bpmn:incoming>Flow_1skyix5</bpmn:incoming>
-      <bpmn:outgoing>Flow_05zsitk</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:sequenceFlow id="Flow_061656b" sourceRef="StartEvent_1" targetRef="Gateway_0cx4pmb" />
     <bpmn:sequenceFlow id="Flow_1c8va2y" name="Karta" sourceRef="Gateway_0cx4pmb" targetRef="Activity_0tjchm0" />
     <bpmn:sequenceFlow id="Flow_0jjr592" name="przelew" sourceRef="Gateway_0cx4pmb" targetRef="Activity_1lxe169" />
@@ -54,14 +46,22 @@
     <bpmn:sequenceFlow id="Flow_1skyix5" sourceRef="Activity_09q8640" targetRef="Activity_14fjlei" />
     <bpmn:sequenceFlow id="Flow_0qta1z5" sourceRef="Activity_0tjchm0" targetRef="Gateway_00gw1rx" />
     <bpmn:sequenceFlow id="Flow_05zsitk" sourceRef="Activity_14fjlei" targetRef="Event_14alp6s" />
-    <bpmn:task id="Activity_0tjchm0" name="Płatność kartą">
+    <bpmn:serviceTask id="Activity_0tjchm0" name="Płatność kartą">
       <bpmn:incoming>Flow_1c8va2y</bpmn:incoming>
       <bpmn:outgoing>Flow_0qta1z5</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:task id="Activity_1lxe169" name="Platność przelew">
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1lxe169" name="Platność przelew">
       <bpmn:incoming>Flow_0jjr592</bpmn:incoming>
       <bpmn:outgoing>Flow_0m2bl7m</bpmn:outgoing>
-    </bpmn:task>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Activity_09q8640" name="Akceptacja regulaminu">
+      <bpmn:incoming>Flow_1sbyzhg</bpmn:incoming>
+      <bpmn:outgoing>Flow_1skyix5</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_14fjlei" name="Wyslij pogdsumowanie">
+      <bpmn:incoming>Flow_1skyix5</bpmn:incoming>
+      <bpmn:outgoing>Flow_05zsitk</bpmn:outgoing>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1ld8ls0">
@@ -94,27 +94,23 @@
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="272" y="512" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_09q8640_di" bpmnElement="Activity_09q8640">
-        <dc:Bounds x="950" y="490" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_00gw1rx_di" bpmnElement="Gateway_00gw1rx" isMarkerVisible="true">
         <dc:Bounds x="825" y="505" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_14alp6s_di" bpmnElement="Event_14alp6s">
         <dc:Bounds x="1152" y="722" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_14fjlei_di" bpmnElement="Activity_14fjlei">
-        <dc:Bounds x="950" y="700" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0tjchm0_di" bpmnElement="Activity_0tjchm0">
+      <bpmndi:BPMNShape id="Activity_09kha8d_di" bpmnElement="Activity_0tjchm0">
         <dc:Bounds x="350" y="160" width="100" height="80" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1lxe169_di" bpmnElement="Activity_1lxe169">
+      <bpmndi:BPMNShape id="Activity_17ay04v_di" bpmnElement="Activity_1lxe169">
         <dc:Bounds x="590" y="328" width="100" height="80" />
-        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0s5shby_di" bpmnElement="Activity_09q8640">
+        <dc:Bounds x="950" y="490" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1gqscvj_di" bpmnElement="Activity_14fjlei">
+        <dc:Bounds x="950" y="700" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_061656b_di" bpmnElement="Flow_061656b">
         <di:waypoint x="308" y="530" />
@@ -130,10 +126,10 @@
       <bpmndi:BPMNEdge id="Flow_0jjr592_di" bpmnElement="Flow_0jjr592">
         <di:waypoint x="425" y="530" />
         <di:waypoint x="500" y="530" />
-        <di:waypoint x="500" y="370" />
-        <di:waypoint x="590" y="369" />
+        <di:waypoint x="500" y="368" />
+        <di:waypoint x="590" y="368" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="471" y="453" width="39" height="14" />
+          <dc:Bounds x="471" y="452" width="39" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0m2bl7m_di" bpmnElement="Flow_0m2bl7m">
