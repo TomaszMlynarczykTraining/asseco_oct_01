@@ -39,9 +39,9 @@
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${czyZatwerdzono==1}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0g049li" sourceRef="Activity_1u6fa21" targetRef="Gateway_12zynv5" />
-    <bpmn:sequenceFlow id="Flow_155vkah" sourceRef="Gateway_12zynv5" targetRef="Activity_1ytpi70" />
+    <bpmn:sequenceFlow id="Flow_155vkah" name="Odrzucenie" sourceRef="Gateway_12zynv5" targetRef="Activity_1ytpi70" />
     <bpmn:sequenceFlow id="Flow_0jfs16c" sourceRef="Activity_1ytpi70" targetRef="Activity_0rjscwj" />
-    <bpmn:userTask id="Activity_1u6fa21" name="Ocenienie wniosku o godziny nadliczbowe">
+    <bpmn:userTask id="Activity_1u6fa21" name="Ocenienie wniosku o godziny nadliczbowe" camunda:formRef="Form_18cgy91" camunda:formRefBinding="latest">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:outputParameter name="Output_3f5qjru">${false}</camunda:outputParameter>
@@ -50,7 +50,7 @@
       <bpmn:incoming>Flow_19s20st</bpmn:incoming>
       <bpmn:outgoing>Flow_0g049li</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:exclusiveGateway id="Gateway_12zynv5">
+    <bpmn:exclusiveGateway id="Gateway_12zynv5" name="Jaki jest status wniosku?">
       <bpmn:extensionElements />
       <bpmn:incoming>Flow_0g049li</bpmn:incoming>
       <bpmn:outgoing>Flow_0aiyi0i</bpmn:outgoing>
@@ -103,6 +103,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_12zynv5_di" bpmnElement="Gateway_12zynv5" isMarkerVisible="true">
         <dc:Bounds x="705" y="485" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="694" y="542" width="73" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_0bqhnsd" bpmnElement="Activity_1ytpi70">
         <dc:Bounds x="680" y="320" width="100" height="80" />
@@ -155,6 +158,9 @@
       <bpmndi:BPMNEdge id="Flow_155vkah_di" bpmnElement="Flow_155vkah">
         <di:waypoint x="730" y="485" />
         <di:waypoint x="730" y="400" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="671" y="440" width="57" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0jfs16c_di" bpmnElement="Flow_0jfs16c">
         <di:waypoint x="730" y="320" />

@@ -1,0 +1,32 @@
+{
+  "components": [
+    {
+      "values": [
+        {
+          "label": "Zatwierdzono",
+          "value": "1"
+        },
+        {
+          "label": "odrzucono",
+          "value": "0"
+        }
+      ],
+      "label": "Wybierz status wniosku",
+      "type": "select",
+      "id": "Field_0icsnt6",
+      "key": "czyZatwerdzono",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "Form_18cgy91",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.18.0",
+  "schemaVersion": 7
+}
