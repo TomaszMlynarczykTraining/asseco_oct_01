@@ -10,6 +10,13 @@
       "type": "checkbox",
       "id": "Field_02g1ze3",
       "key": "isCorrect"
+    },
+    {
+      "values": [],
+      "label": "Select",
+      "type": "select",
+      "id": "Field_0rbqrbx",
+      "key": "field_0epi9zg"
     }
   ],
   "type": "default",
