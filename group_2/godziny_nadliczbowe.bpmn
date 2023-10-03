@@ -41,7 +41,7 @@
     <bpmn:sequenceFlow id="Flow_0g049li" sourceRef="Activity_1u6fa21" targetRef="Gateway_12zynv5" />
     <bpmn:sequenceFlow id="Flow_155vkah" sourceRef="Gateway_12zynv5" targetRef="Activity_1ytpi70" />
     <bpmn:sequenceFlow id="Flow_0jfs16c" sourceRef="Activity_1ytpi70" targetRef="Activity_0rjscwj" />
-    <bpmn:userTask id="Activity_1u6fa21" name="Ocenienie wniosku o godziny nadliczbowe">
+    <bpmn:userTask id="Activity_1u6fa21" name="Ocenienie wniosku o godziny nadliczbowe" camunda:formRef="Form_18cgy91" camunda:formRefBinding="latest">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:outputParameter name="Output_3f5qjru">${false}</camunda:outputParameter>
