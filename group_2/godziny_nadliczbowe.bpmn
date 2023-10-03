@@ -49,7 +49,9 @@
       <bpmn:incoming>Flow_1f6k0vo</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:callActivity id="Activity_0rjscwj" name="Otrzymanie decyzji odnośnie wniosku od przełożonego" calledElement="Process_akceptacja_decyzji">
-      <bpmn:extensionElements />
+      <bpmn:extensionElements>
+        <camunda:in variables="all" />
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_04x9qnt</bpmn:incoming>
       <bpmn:incoming>Flow_0jfs16c</bpmn:incoming>
       <bpmn:outgoing>Flow_1f6k0vo</bpmn:outgoing>
@@ -108,12 +110,12 @@
         <dc:Bounds x="160" y="70" width="1460" height="670" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_0hin7yo_di" bpmnElement="Lane_0hin7yo" isHorizontal="true">
-        <dc:Bounds x="190" y="295" width="1430" height="445" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1tx04p1_di" bpmnElement="Lane_1tx04p1" isHorizontal="true">
         <dc:Bounds x="190" y="70" width="1430" height="225" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0hin7yo_di" bpmnElement="Lane_0hin7yo" isHorizontal="true">
+        <dc:Bounds x="190" y="295" width="1430" height="445" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -173,13 +175,13 @@
         <di:waypoint x="455" y="560" />
         <di:waypoint x="495" y="560" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1jo9r1c_di" bpmnElement="Flow_1jo9r1c">
-        <di:waypoint x="735" y="560" />
-        <di:waypoint x="777" y="560" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0or6w15_di" bpmnElement="Flow_0or6w15">
         <di:waypoint x="595" y="560" />
         <di:waypoint x="635" y="560" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jo9r1c_di" bpmnElement="Flow_1jo9r1c">
+        <di:waypoint x="735" y="560" />
+        <di:waypoint x="777" y="560" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0n1xqrq_di" bpmnElement="Flow_0n1xqrq">
         <di:waypoint x="378" y="180" />
