@@ -1,0 +1,24 @@
+{
+  "components": [
+    {
+      "text": "# Czy formularz 800+ jest poprawny?",
+      "type": "text",
+      "id": "Field_1ff1osb"
+    },
+    {
+      "label": "Forumlarz poprawny",
+      "type": "checkbox",
+      "id": "Field_02g1ze3",
+      "key": "isCorrect"
+    }
+  ],
+  "type": "default",
+  "id": "FR_800_001",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.18.0",
+  "schemaVersion": 7
+}
