@@ -1,0 +1,37 @@
+{
+  "components": [
+    {
+      "text": "# Wybierz sposób płatności",
+      "type": "text",
+      "id": "Field_0kxx5iw"
+    },
+    {
+      "values": [
+        {
+          "label": "Czy Przelew",
+          "value": "Przelew"
+        },
+        {
+          "label": "Czy Karta",
+          "value": "Karta"
+        }
+      ],
+      "label": "Select",
+      "type": "select",
+      "id": "Field_0wbhs3b",
+      "key": "sposobPlatnosci",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "Form_sposobPlatn1",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.18.0",
+  "schemaVersion": 7
+}
