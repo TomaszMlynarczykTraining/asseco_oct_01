@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="id123" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+  <decision id="liczbNadgodz" name="Liczba nadgodzin">
+    <informationRequirement id="InformationRequirement_0els628">
+      <requiredInput href="#wyrobGodz" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0eqfq0e">
+      <requiredInput href="#stazPrac" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_13v0lo3">
+      <input id="Input_1" camunda:inputVariable="wyrobGodz">
+        <inputExpression id="InputExpression_1" typeRef="integer">
+          <text>WyrobioneGodziny</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_110hxlg" camunda:inputVariable="stazPrac">
+        <inputExpression id="LiteralExpression_1a7ez30" typeRef="integer">
+          <text>StazPracownika</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" name="IloscNadgodzin" typeRef="integer" />
+      <rule id="DecisionRule_0qyzveg">
+        <inputEntry id="UnaryTests_1248tdv">
+          <text>&lt;20</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lq59qk">
+          <text>&gt;2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0t8t8sy">
+          <text>8</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zccu4h">
+        <inputEntry id="UnaryTests_0x7w9dz">
+          <text>[20..100]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vjdkq7">
+          <text>&gt;2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0vynl6c">
+          <text>4</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0nu1640">
+        <inputEntry id="UnaryTests_187ex2g">
+          <text>&gt;100</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ij1o6r">
+          <text>&gt;2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ab4gxa">
+          <text>2</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1a7r995">
+        <inputEntry id="UnaryTests_1dnsniv">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11rhw4g">
+          <text>&lt;2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1w8y8m1">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="wyrobGodz" name="ilość wyrobionych godzin" />
+  <inputData id="stazPrac" name="Staż pracownika" />
+  <inputData id="dzienTyg" name="Czy weekend?" />
+  <inputData id="stawkaPodst" name="Stawka podstawowa" />
+  <decision id="Decision_07de8vh" name="stawka">
+    <informationRequirement id="InformationRequirement_1miyq1h">
+      <requiredDecision href="#liczbNadgodz" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1j15gqj">
+      <requiredInput href="#dzienTyg" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0hg7rdu">
+      <requiredInput href="#stawkaPodst" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1c9235g">
+      <input id="InputClause_0cizi1w" camunda:inputVariable="IloscNadgodzin">
+        <inputExpression id="LiteralExpression_11ofasp" typeRef="integer">
+          <text>LiczbaNadgodzin</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1jt174u" camunda:inputVariable="dzienTyg">
+        <inputExpression id="LiteralExpression_1f8y6lr" typeRef="boolean">
+          <text>Czyweekend</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1bzgsmk" name="stawka" typeRef="double" />
+      <rule id="DecisionRule_069d067">
+        <inputEntry id="UnaryTests_1tww2d7">
+          <text>2</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0az8r5y">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ykkddg">
+          <text>stawkaPodst*1,2</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fbkory">
+        <inputEntry id="UnaryTests_117xjys">
+          <text>4</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0c1ss8l">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_026ki4u">
+          <text>stawkaPodst*1,4</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12l1o4p">
+        <inputEntry id="UnaryTests_1t37c36">
+          <text>8</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tgxarp">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1w0a1fc">
+          <text>stawkaPodst*1,8</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zqflcv">
+        <inputEntry id="UnaryTests_0j7y73h">
+          <text>2</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hakuux">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0cmmuc4">
+          <text>stawkaPodst*1,2*2</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0jvwh9v">
+        <inputEntry id="UnaryTests_11k1rva">
+          <text>4</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07ujch5">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1afv4c9">
+          <text>stawkaPodst*1,4*2</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04x46g6">
+        <inputEntry id="UnaryTests_0gvmb8l">
+          <text>8</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1erf48j">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19ggg4b">
+          <text>stawkaPodst*1,8*2</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="liczbNadgodz">
+        <dc:Bounds height="80" width="180" x="270" y="160" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0npxcdn" dmnElementRef="wyrobGodz">
+        <dc:Bounds height="45" width="125" x="158" y="338" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1bblp4w" dmnElementRef="stazPrac">
+        <dc:Bounds height="45" width="125" x="368" y="339" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1db44w0" dmnElementRef="InformationRequirement_0els628">
+        <di:waypoint x="221" y="338" />
+        <di:waypoint x="330" y="260" />
+        <di:waypoint x="330" y="240" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0wg7bze" dmnElementRef="InformationRequirement_0eqfq0e">
+        <di:waypoint x="431" y="339" />
+        <di:waypoint x="390" y="260" />
+        <di:waypoint x="390" y="240" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0ep3kx6" dmnElementRef="InformationRequirement_1miyq1h">
+        <di:waypoint x="450" y="200" />
+        <di:waypoint x="530" y="150" />
+        <di:waypoint x="550" y="150" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0ta2281" dmnElementRef="dzienTyg">
+        <dc:Bounds height="45" width="125" x="707" y="268" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0v1t7ya" dmnElementRef="InformationRequirement_1j15gqj">
+        <di:waypoint x="770" y="268" />
+        <di:waypoint x="670" y="210" />
+        <di:waypoint x="670" y="190" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0142kn8" dmnElementRef="stawkaPodst">
+        <dc:Bounds height="45" width="125" x="517" y="268" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1k1wbk9" dmnElementRef="InformationRequirement_0hg7rdu">
+        <di:waypoint x="580" y="268" />
+        <di:waypoint x="610" y="210" />
+        <di:waypoint x="610" y="190" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_076vp3y" dmnElementRef="Decision_07de8vh">
+        <dc:Bounds height="80" width="180" x="550" y="110" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

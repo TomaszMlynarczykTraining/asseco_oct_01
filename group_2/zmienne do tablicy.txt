@@ -1,0 +1,4 @@
+stawkaPodst int
+StazPracownika int
+WyrobioneGodziny int
+dzienTyg bool
