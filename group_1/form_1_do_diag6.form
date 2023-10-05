@@ -1,0 +1,25 @@
+{
+  "components": [
+    {
+      "text": "# Czy zamówienie jest poprawne?",
+      "type": "text",
+      "id": "Field_0unc2qk"
+    },
+    {
+      "label": "Zamówienie poprawne",
+      "type": "checkbox",
+      "id": "Field_10urpol",
+      "key": "orderCorrection",
+      "defaultValue": true
+    }
+  ],
+  "type": "default",
+  "id": "Form_1_do_diag6",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.18.0",
+  "schemaVersion": 7
+}
