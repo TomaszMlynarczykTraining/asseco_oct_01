@@ -22,19 +22,37 @@
     <bpmn:userTask id="Activity_0fckr0n" name="podanie danych">
       <bpmn:incoming>Flow_0hzysgo</bpmn:incoming>
       <bpmn:outgoing>Flow_1t0o72y</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics camunda:collection="list" camunda:elementVariable="tmp" />
     </bpmn:userTask>
+    <bpmn:textAnnotation id="TextAnnotation_0xgbv3u">
+      <bpmn:text>{
+        "list": {
+            "type": "Object",
+            "value": "[\"test1\",\"test2\"]",
+            "valueInfo": {
+                "objectTypeName": "java.util.ArrayList",
+                "serializationDataFormat":"application/json"
+            }
+        }
+ }</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_04pkuoz" sourceRef="Activity_0fckr0n" targetRef="TextAnnotation_0xgbv3u" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1o6fi38">
+      <bpmndi:BPMNShape id="TextAnnotation_0xgbv3u_di" bpmnElement="TextAnnotation_0xgbv3u">
+        <dc:Bounds x="360" y="180" width="413" height="156" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_15m75re_di" bpmnElement="Event_15m75re">
         <dc:Bounds x="742" y="99" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_05236fr_di" bpmnElement="Activity_14krv4o">
         <dc:Bounds x="520" y="77" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="152" y="99" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1gc1n1f_di" bpmnElement="Decision_123">
         <dc:Bounds x="370" y="77" width="100" height="80" />
@@ -43,13 +61,17 @@
       <bpmndi:BPMNShape id="Activity_1nsm6w4_di" bpmnElement="Activity_0fckr0n">
         <dc:Bounds x="220" y="77" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_083ga29_di" bpmnElement="Flow_083ga29">
-        <di:waypoint x="620" y="117" />
-        <di:waypoint x="742" y="117" />
+      <bpmndi:BPMNEdge id="Association_04pkuoz_di" bpmnElement="Association_04pkuoz">
+        <di:waypoint x="320" y="145" />
+        <di:waypoint x="383" y="180" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1749bjn_di" bpmnElement="Flow_1749bjn">
         <di:waypoint x="470" y="117" />
         <di:waypoint x="520" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_083ga29_di" bpmnElement="Flow_083ga29">
+        <di:waypoint x="620" y="117" />
+        <di:waypoint x="742" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0hzysgo_di" bpmnElement="Flow_0hzysgo">
         <di:waypoint x="188" y="117" />
